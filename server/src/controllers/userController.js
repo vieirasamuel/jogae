@@ -11,20 +11,19 @@ async function index(req, res) {
 }
 
 async function store(req, res) {
-  const { name, email, password } = req.body;
+  const { name, email, password, cpf, username } = req.body;
   const pepperedPassword = password + process.env.PEPPER;
   const hashedPassword = await hash(pepperedPassword, 10);
   const uuid = uuidv4();
   const [user, created] = await User.findOrCreate({
-    attributes: {
-      name,
-      email,
-    },
+    attributes: ['name', 'email', 'cpf', 'username'],
     where: { email },
     defaults: {
       uuid,
       name,
       password: hashedPassword,
+      cpf,
+      username,
     },
   });
   if (created) {
