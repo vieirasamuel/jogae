@@ -14,7 +14,7 @@ class Events extends Model {
         organizador: DataTypes.INTEGER,
         descricao: DataTypes.STRING,
         data: DataTypes.DATE,
-        //imagem: DataTypes.STRING,
+        imagem: DataTypes.STRING,
         id: DataTypes.STRING,
         uuid: DataTypes.STRING,
         valor: DataTypes.FLOAT,
