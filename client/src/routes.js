@@ -3,13 +3,14 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 // imports das páginas
 import Login from './pages/Login';
-
+import Feed from './pages/Feed';
 const RoutesIndex = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Login />} path="/" exact />
-        <Route component={Login} path="/login" />
+        <Route element={<Feed />} path="/feed" />
+
       </Routes>
     </BrowserRouter>
   );
