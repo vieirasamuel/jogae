@@ -46,16 +46,16 @@ module.exports = {
         allowNull: false,
       },
       descricao: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       data: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       imagem: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       valor: {
         type: Sequelize.FLOAT,
@@ -69,10 +69,18 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('events');
   },
 };

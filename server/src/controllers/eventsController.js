@@ -1,20 +1,52 @@
 require('dotenv/config');
 const { v4: uuidv4 } = require('uuid');
-const jwt = require('../middlewares/jwt');
 
 const Events = require('../models/Events');
 
 async function index(req, res) {
   const events = await Events.findAll({
-    attributes: ['uuid', 'name', 'email'], // alterar para os atributos certos
+    attributes: ['uuid', 'nome', 'organizador'],
   });
   return res.json(events);
 }
 
 async function store(req, res) {
   const uuid = uuidv4();
-  const [event, created] = await Event.create({}); // passar atributos
-  return res.json('Novo evento criado.');
+  const {
+    nome,
+    local,
+    cidade,
+    estado,
+    pais,
+    situacao,
+    modalidade,
+    organizador,
+    descricao,
+    data,
+    valor,
+    jogadores,
+    espectadores,
+  } = req.body;
+  const event = await Events.create({
+    uuid,
+    nome,
+    local,
+    cidade,
+    estado,
+    pais,
+    situacao,
+    modalidade,
+    organizador,
+    descricao,
+    data,
+    valor,
+    jogadores,
+    espectadores,
+  });
+  if (event) {
+    return res.status(201).json(event);
+  }
+  return res.status(400).json('Falha ao criar novo evento.');
 }
 
 async function get(req, res) {
@@ -22,8 +54,8 @@ async function get(req, res) {
   if (!uuid) {
     return res.status(400).json({ message: 'Bad Request' });
   }
-  const event = await User.findOne({
-    attributes: ['uuid', 'name', 'email'], // alterar para os atributos certos
+  const event = await Events.findOne({
+    attributes: ['uuid', 'nome', 'organizador'], // alterar para os atributos certos
     where: { uuid },
   });
   if (event) {

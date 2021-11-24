@@ -1,7 +1,10 @@
 const express = require('express');
 const user = require('./user.routes');
+const events = require('./events.routes');
+
 const router = express.Router();
 
+router.use('/events', events);
 router.use('/users', user);
 
 router.get('/', (req, res) => {
