@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@mui/material/Card';
+import Card from '../components/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -65,7 +65,7 @@ export default function Feed() {
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container maxWidth="md">
             <Typography
               component="h1"
               variant="h2"
@@ -102,35 +102,21 @@ export default function Feed() {
             Meus Eventos
           </Typography>
           <Grid container spacing={4}>
-            {eventos.map((evento) => (
-              <Grid item key={evento.uuid} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '10.25%',
-                    }}
-                    image="https://sindicolegal.com/wp-content/uploads/2018/05/quadra-poliesportiva-portal.jpg"
-                    alt="random"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {evento.nome}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">Mais Informações</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+            <Card dados={eventos} />
+          </Grid>
+        </Container>
+        <Container sx={{ py: 8 }} maxWidth="md">
+          <Typography
+            component="h3"
+            variant="h4"
+            align="left"
+            color="text.primary"
+            gutterBottom
+          >
+            Minhas Inscrições
+          </Typography>
+          <Grid container spacing={4}>
+            <Card dados={eventos} />
           </Grid>
         </Container>
       </main>
