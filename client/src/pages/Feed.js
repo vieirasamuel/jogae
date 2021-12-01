@@ -17,6 +17,7 @@ import * as MaterialLink from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import API from '../services/api';
+import Header from '../components/Header';
 
 function Copyright() {
   return (
@@ -42,16 +43,11 @@ const theme = createTheme({
   },
 });
 
-export default function Album() {
+export default function Feed() {
   const [eventos, setEventos] = useState([]);
 
   useEffect(async () => {
-    const { data } = await API.get('/events/list', {
-      headers: {
-        'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZmQ0Yzk1ZTctYjk0Mi00NmRjLWIxYjItNDcwNmM2M2JlOTA5IiwibmFtZSI6IkNpY2xhbm8iLCJlbWFpbCI6ImNpY2xhbm8yQGVtYWlsLmNvbSIsImlhdCI6MTYzODM5NzQ3MSwiZXhwIjoxNjM4NDAxMDcxfQ.F7YvEMkqGBnofffoRA3Omt4cV9L9mlbvGRX0mVJ3bLM',
-      },
-    });
+    const { data } = await API.get('/events/list');
     setEventos(data);
   }, []);
 
@@ -59,14 +55,7 @@ export default function Album() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Jogae
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Header />
       <main>
         {/* Hero unit */}
         <Box
@@ -103,7 +92,15 @@ export default function Album() {
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
+          <Typography
+            component="h3"
+            variant="h4"
+            align="left"
+            color="text.primary"
+            gutterBottom
+          >
+            Meus Eventos
+          </Typography>
           <Grid container spacing={4}>
             {eventos.map((evento) => (
               <Grid item key={evento.uuid} xs={12} sm={6} md={4}>
