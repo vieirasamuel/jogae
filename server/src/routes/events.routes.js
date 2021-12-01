@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
   res.send('Hello World Events!');
 });
 
-router.post('/create', jwt.verify, eventsController.store);
-router.get('/list', jwt.verify, eventsController.index);
-router.get('/get', jwt.verify, eventsController.get);
+router.post('/create', eventsController.store);
+router.get('/list', eventsController.index);
+router.get('/get', eventsController.get);
 
 module.exports = router;

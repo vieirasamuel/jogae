@@ -9,8 +9,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/register', userController.store);
-router.get('/list', jwt.verify, userController.index);
-router.get('/get', jwt.verify, userController.get);
+router.get('/list', userController.index);
+router.get('/get', userController.get);
 router.post('/auth', userController.auth);
 
 module.exports = router;
