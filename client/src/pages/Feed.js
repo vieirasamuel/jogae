@@ -1,36 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
 import Card from '../components/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import * as MaterialLink from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
 import API from '../services/api';
 import Header from '../components/Header';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <MaterialLink color="inherit" href="https://mui.com/">
-        Your Website
-      </MaterialLink>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const theme = createTheme({
   palette: {
@@ -51,76 +31,99 @@ export default function Feed() {
     setEventos(data);
   }, []);
 
-  console.log(eventos);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-      <main>
-        {/* Hero unit */}
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth="md">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Explorar
-            </Typography>
+      {/* Hero unit */}
+      <Box
+        sx={{
+          bgcolor: 'background.paper',
+          pt: 8,
+          pb: 6,
+        }}
+      >
+        <Container maxWidth="md">
+          <Typography
+            component="h1"
+            variant="h3"
+            align="center"
+            color="text.primary"
+            gutterBottom
+          >
+            Explorar
+          </Typography>
 
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <input
-                type="text"
-                id="myInput"
-                onkeyup="myFunction()"
-                placeholder="Procure novas quadras..."
-              ></input>
-            </Stack>
-          </Container>
-        </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          <Typography
-            component="h3"
-            variant="h4"
-            align="left"
-            color="text.primary"
-            gutterBottom
+          <Stack
+            sx={{ pt: 4 }}
+            direction="row"
+            spacing={2}
+            justifyContent="center"
           >
-            Meus Eventos
-          </Typography>
-          <Grid container spacing={4}>
-            <Card dados={eventos} />
-          </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="busca"
+                fullWidth
+                id="busca"
+                label="Pesquisar eventos"
+              />
+            </Grid>
+            <Grid item xs={12} sm={2}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 2, mb: 2 }}
+                size="large"
+              >
+                Pesquisar
+              </Button>
+            </Grid>
+          </Stack>
         </Container>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          <Typography
-            component="h3"
-            variant="h4"
-            align="left"
-            color="text.primary"
-            gutterBottom
-          >
-            Minhas Inscrições
-          </Typography>
-          <Grid container spacing={4}>
-            <Card dados={eventos} />
-          </Grid>
-        </Container>
-      </main>
-      {/* Footer */}
+      </Box>
+      <Container maxWidth="md">
+        <Typography
+          component="h3"
+          variant="h4"
+          align="left"
+          color="text.primary"
+          gutterBottom
+        >
+          Meus eventos
+        </Typography>
+        <Grid container spacing={4}>
+          <Card dados={eventos} />
+        </Grid>
+      </Container>
+      <Container sx={{ py: 8 }} maxWidth="md">
+        <Typography
+          component="h3"
+          variant="h4"
+          align="left"
+          color="text.primary"
+          gutterBottom
+        >
+          Minhas inscrições
+        </Typography>
+        <Grid container spacing={4}>
+          <Card dados={[]} />
+        </Grid>
+      </Container>
+      <Container sx={{ py: 8 }} maxWidth="md">
+        <Typography
+          component="h3"
+          variant="h4"
+          align="left"
+          color="text.primary"
+          gutterBottom
+        >
+          Descubra eventos
+        </Typography>
+        <Grid container spacing={4}>
+          <Card dados={eventos} />
+        </Grid>
+      </Container>
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography
           variant="subtitle1"
@@ -130,9 +133,7 @@ export default function Feed() {
         >
           <Button size="small">Ver Mais</Button>
         </Typography>
-        {/*<Copyright /> */}
       </Box>
-      {/* End footer */}
     </ThemeProvider>
   );
 }
