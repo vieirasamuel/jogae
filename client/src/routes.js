@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Feed from './pages/Feed';
 import Cadastro from './pages/Cadastro';
 import Checkout from './pages/Checkout';
-import FormaPagamento from './pages/FormaPagamento'
+import FormaPagamento from './pages/FormaPagamento';
 
 const RoutesIndex = () => {
   return (
