@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 export default function Feed({ dados }) {
   return (
@@ -41,15 +42,17 @@ export default function Feed({ dados }) {
           </Grid>
         ))
       ) : (
-        <Typography
-          component="h5"
-          variant="h5"
-          align="center"
-          color="text.primary"
-          gutterBottom
-        >
-          Nenhum evento cadastrado.
-        </Typography>
+        <Container sx={{ py: 8 }} maxWidth="md">
+          <Typography
+            component="h5"
+            variant="h5"
+            align="center"
+            color="text.primary"
+            gutterBottom
+          >
+            Nenhum evento cadastrado.
+          </Typography>
+        </Container>
       )}
     </React.Fragment>
   );
