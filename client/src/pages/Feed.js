@@ -17,6 +17,7 @@ import * as MaterialLink from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import API from '../services/api';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 
 function Copyright() {
   return (
@@ -61,7 +62,7 @@ export default function Album() {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
+          <portsSoccerIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" noWrap>
             Jogae
           </Typography>

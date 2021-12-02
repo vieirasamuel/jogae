@@ -62,11 +62,11 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="Nome"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="Nome"
+                  label="Nome"
                   autoFocus
                 />
               </Grid>
@@ -74,9 +74,9 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
+                  id="Sobrenome"
+                  label="Sobrenome"
+                  name="Sobrenome"
                   autoComplete="family-name"
                 />
               </Grid>
@@ -85,7 +85,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Email"
                   name="email"
                   autoComplete="email"
                 />
@@ -94,17 +94,17 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
+                  name="Senha"
+                  label="Senha"
+                  type="Senha"
+                  id="Senha"
                   autoComplete="new-password"
                 />
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label="Aceito receber promoções via email."
                 />
               </Grid>
             </Grid>

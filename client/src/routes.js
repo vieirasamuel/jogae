@@ -12,7 +12,7 @@ const RoutesIndex = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Login />} path="/" exact />
+        <Route element={<Login />} path="/login"  />
         <Route element={<Feed />} path="/feed" />
         <Route element={<Cadastro />} path="/cadastro" />
         <Route element={<Checkout />} path="/checkout" />
