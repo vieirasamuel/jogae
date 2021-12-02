@@ -59,6 +59,7 @@ export default function Feed() {
             direction="row"
             spacing={2}
             justifyContent="center"
+            alignItems="center"
           >
             <Grid item xs={12} sm={6}>
               <TextField
@@ -75,6 +76,7 @@ export default function Feed() {
                 variant="contained"
                 sx={{ mt: 2, mb: 2 }}
                 size="large"
+                style={{ height: 54 }}
               >
                 Pesquisar
               </Button>
