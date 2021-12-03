@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,6 +10,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Navigate } from 'react-router-dom';
+
+import API from '../services/api';
 
 function Copyright(props) {
   return (
@@ -32,14 +35,21 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const [erro, setErro] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('senha'),
+    const login = await API.post('/users/auth', {
+      email: email,
+      password: password,
     });
+    console.log(login);
+    if (login.status === 200) {
+      setErro(false);
+    }
   };
 
   return (
@@ -67,10 +77,11 @@ export default function SignUp() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}></Grid>
-              <Grid item xs={12} sm={6}></Grid>
               <Grid item xs={12}>
                 <TextField
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                   required
                   fullWidth
                   id="email"
@@ -81,6 +92,9 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                   required
                   fullWidth
                   name="senha"
@@ -100,6 +114,7 @@ export default function SignUp() {
             >
               Entrar
             </Button>
+            {!erro ? <Navigate to="/feed" /> : ''}
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/cadastro" variant="body2">
