@@ -8,6 +8,7 @@ import Cadastro from './pages/Cadastro';
 import Checkout from './pages/Checkout';
 import FormaPagamento from './pages/FormaPagamento';
 import CadastroEvento from './pages/CadastroEvento';
+import DescricaoEvento from './pages/DescricaoEvento';
 
 const RoutesIndex = () => {
   return (
@@ -19,6 +20,7 @@ const RoutesIndex = () => {
         <Route element={<Checkout />} path="/checkout" />
         <Route element={<FormaPagamento />} path="/formaPagamento" />
         <Route element={<CadastroEvento />} path="/novoEvento" />
+        <Route element={<DescricaoEvento />} path="/descricaoEvento" />
       </Routes>
     </BrowserRouter>
   );
