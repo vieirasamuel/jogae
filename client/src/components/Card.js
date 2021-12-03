@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -7,8 +7,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { Navigate } from 'react-router-dom';
 
 export default function Feed({ dados }) {
+  const [redirect, setRedirect] = useState(false);
+  const handleClick = async (event) => {
+    event.preventDefault();
+    setRedirect(true);
+  };
+
   return (
     <React.Fragment>
       {dados.length > 0 ? (
@@ -36,7 +43,10 @@ export default function Feed({ dados }) {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Mais Informações</Button>
+                <Button onClick={handleClick} size="small">
+                  Mais Informações
+                </Button>
+                {redirect ? <Navigate to="/descricaoevento" /> : ''}
               </CardActions>
             </Card>
           </Grid>
